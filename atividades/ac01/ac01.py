@@ -21,16 +21,32 @@ while ganhos < gastos:
     else:
         print('Você não pode tirar mais dinheiro da sua conta')
 
-while ganhos > gastos:
-    print('Seu saldo está positivo, gostaria de adicionar mais dinheiro?')
+while True:
+    print('Gostaria de adicionar mais dinheiro?')
     respostaGanhos = input('Sim ou Não?').upper()
 
     if respostaGanhos == 'SIM':
         adicionar = float(input('Adicionar:'))
-        if adicionar > 0:
+        if adicionar >= 0:
             ganhos += adicionar
-            print('Você adicionou dinheiro na sua conta, seu saldo atual é: R$' + str(ganhos))
+
+            saldo = ganhos - gastos
+            print('Você adicionou dinheiro na sua conta, seu saldo atual é: R$' + str(saldo))
         else:
-            print('Você tirou dinheiro da sua conta, seu saldo atual é: R$' + str(ganhos - adicionar))
-    else:
-        print('Ok')
+            print('Valor inválido! Você não pode adicionar valores negativos.')
+    elif respostaGanhos == 'NÃO':
+        print('Gostaria de remover dinheiro da sua conta?')
+        respostaGastos = input('Sim ou Não?').upper()
+
+        if respostaGastos == 'SIM':
+            remover = float(input('Remover:'))
+            if remover > 0:
+                gastos += remover
+                saldo = ganhos - gastos
+                print('Você removeu dinheiro da sua conta, seu saldo atual é: R$' + str(saldo))
+            else:
+                print('Valor inválido! Você deve inserir um valor positivo para remover.')
+        elif respostaGastos == 'NÃO':
+            print('TOP! d(✪ ω ✪)b')
+            print('        d b')
+            break
